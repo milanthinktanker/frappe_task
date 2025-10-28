@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Customer Manager</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    h1 { color: #333; }
+    form, table { margin-top: 20px; }
+    input, button { padding: 8px; margin: 5px; border-radius: 6px; border: 1px solid #aaaaaa; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #f4f4f4; }
+    .actions button { margin-right: 5px; }
+    #save { background-color: rgb(23, 22, 22); color: #ffffff; }
+    button:hover { background-color: #aaaaaa; }
+    #save:hover { background-color: #aaaaaa; }
+  </style>
+</head>
+<body>
+  <h1>Customer Manager</h1>
+
+  <!-- Add Customer Form -->
+  <form id="customerForm">
+    <input type="hidden" id="docname" />
+    <input type="text" id="first_name" placeholder="First Name" required />
+    <input type="text" id="last_name" placeholder="Last Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <label>Upload Photo:</label>
+    <input type="file" id="photo" accept="image/*" /><br>
+    <div id="photoPreview"></div>
+
+    <h3>Addresses</h3>
+    <div id="addressesContainer"></div>
+    <button type="button" id="addAddress">➕ Add Address</button><br><br>
+
+    <button type="submit" id="save">Save</button>
+  </form>
+
+  <!-- Customer List -->
+  <table id="customerTable">
+    <thead>
+      <tr>
+        <th>Name</th><th>Email</th><th>Photo</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/js/frappe-web.min.js"></script>
+  <script src="/js/libs.min.js"></script>
+  <script>
+      window.csrf_token = "{{ frappe.session.csrf_token }}";
+      frappe.csrf_token = window.csrf_token;  
+  </script>
+  <script src="customers1/customers1.js"></script>
+</body>
+</html>

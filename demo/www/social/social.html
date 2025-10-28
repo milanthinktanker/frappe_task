@@ -1,0 +1,31 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<h1 class="text-center mt-5">Blog Posts</h1>
+
+<div class="text-center mt-3">
+  <input type="text" id="searchInput" placeholder="Search blog..." onkeyup="filterBlogs()" class="form-control w-50 mx-auto">
+</div>
+
+<div id="blogList" class="mt-4">
+  {% for blog in blogs %}
+    <div class="card my-3 w-75 mx-auto p-3">
+      <h3><a href="/blogs/{{ blog.route }}">{{ blog.title }}</a></h3>
+      <p><b>Author:</b> {{ blog.author }} | <b>Date:</b> {{ blog.published_on }}</p>
+      <p>{{ blog.preview }}</p>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+function filterBlogs() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let blogs = document.querySelectorAll("#blogList .card");
+  blogs.forEach(card => {
+    let text = card.innerText.toLowerCase();
+    card.style.display = text.includes(input) ? "" : "none";
+  });
+}
+</script>
+{% endblock %}
+
+

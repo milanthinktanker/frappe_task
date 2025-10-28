@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ blog.title }}</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 40px 0;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      max-width: 800px;
+      margin: auto;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .meta {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .content {
+      color: #333;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* .nav-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    /* ✅ Added button styling */
+    .nav-btn {
+      background: #f1f3f5;
+      color: #333;
+      padding: 8px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: #007bff;
+      color: #fff;
+    }
+
+    .nav-btn.prev::before {
+      content: "← ";
+    }
+
+    .nav-btn.next::after {
+      content: " →";
+    } */
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>{{ blog.title }}</h1>
+
+    <div class="meta">
+      🖋️ By <strong>{{ blog_author_name }}</strong>
+      {% if blog_author_city %} ({{ blog_author_city }}){% endif %}
+      <br>
+      📅 Published on {{ blog.published_on }}
+    </div>
+
+    <div class="content">
+      {{ blog.content }}
+    </div>
+
+    <!-- ✅ Navigation links -->
+    <!-- <div class="nav-links">
+      {% if prev_blog %}
+        <a class="nav-btn prev" href="/blogs/{{ prev_blog.route }}">{{ prev_blog.title }}</a>
+      {% else %}
+        <div></div>
+      {% endif %}
+
+      {% if next_blog %}
+        <a class="nav-btn next" href="/blogs/{{ next_blog.route }}">{{ next_blog.title }}</a>
+      {% endif %}
+    </div> -->
+  </div>
+</body>
+</html>
