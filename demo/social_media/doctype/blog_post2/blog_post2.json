@@ -40,7 +40,7 @@
   {
    "default": "Draft",
    "fieldname": "status",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "label": "Status",
    "options": "Draft\nPublished"
   },
@@ -54,7 +54,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-27 16:46:29.118339",
+ "modified": "2025-10-28 14:36:35.482996",
  "modified_by": "Administrator",
  "module": "Social Media",
  "name": "Blog Post2",

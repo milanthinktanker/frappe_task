@@ -1,5 +1,5 @@
 import frappe
-
+import re
 @frappe.whitelist(allow_guest=True)
 def get_published_blogs(search=None):
     """Fetch all published blogs with author info (username, city) using Frappe ORM"""
@@ -44,10 +44,8 @@ def get_context(context):
 
     # Truncate content preview (first 200 chars)
     for blog in blogs:
-        if blog.content:
-            blog.preview = blog.content[:200] + ("..." if len(blog.content) > 200 else "")
-        else:
-            blog.preview = ""
+        text = re.sub(r"<[^>]*>", "", blog.content or "")
+        blog.preview = text[:200] + ("..." if len(text) > 200 else "")
 
     context.blogs = blogs
     return context
